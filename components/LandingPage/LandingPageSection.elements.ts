@@ -28,7 +28,7 @@ export const Column = styled.div<Props>`
 width: 50%;
 padding: 1em 2em;
 > span {
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: ${({ lightbg }) => lightbg ? shadows.darkBlue : shadows.beige};
 }
 `;
