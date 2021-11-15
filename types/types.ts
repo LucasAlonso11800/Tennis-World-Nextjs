@@ -21,15 +21,22 @@ export type PlayerType = {
     race_ranking: number
     ranking_points: number
     race_points: number
-}
-
-export type FetchPlayerResponse = {
-    results: {
-        rankings: PlayerType[],
-    }
 };
 
 export enum ETour {
     ATP = 'ATP',
     WTA = 'WTA'
 };
+
+export type TournamentType = {
+    city: string
+    code: string
+    country: string
+    country_code: string
+    end_date: string
+    id: number
+    name: string
+    season: number
+    start_date: string
+    surface: string
+}
