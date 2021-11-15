@@ -20,7 +20,7 @@ type Props = {
 };
 
 export default function RankingPage(props: Props) {
-    const { players, endpoint, rankingProperty } = props;
+    const { players, endpoint } = props;
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [rankings, setRankings] = useState<PlayerType[]>(players);
@@ -34,7 +34,9 @@ export default function RankingPage(props: Props) {
         setIsLoading(true);
 
         try {
-            const data: PlayerType[] = await (await axios.post(`${API_URL}/${endpoint}`, { tour, country, rankingProperty })).data.results.rankings;
+            const data: PlayerType[] = await (await axios.post(`${API_URL}/${endpoint}`, { 
+                tour, country, minRanking, maxRanking
+             })).data;
 
             setIsLoading(false);
             setRankings(data);
@@ -71,12 +73,16 @@ type StaticProps = {
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps>> {
     try {
-        const data: PlayerType[] = await (await axios.post(`${API_URL}/ranking`, { tour: 'ATP' })).data.results.rankings;
-        const players = data.filter(player => player.ranking <= 50 && player.full_name !== 'Kevin Krawietz');
+        const data: PlayerType[] = await (await axios.post(`${API_URL}/ranking`, { 
+            tour: ETour.ATP, 
+            country: '',
+            minRanking: 1,
+            maxRanking: 50
+         })).data;
 
         return {
             props: {
-                players,
+                players: data,
                 endpoint: 'ranking',
                 rankingProperty: 'ranking'
             }
