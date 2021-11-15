@@ -93,3 +93,10 @@ export type ArticleType = {
     publishedAt: string
     content: string
 };
+
+export type UserType = {
+    _id: string
+    email: string
+    password: string
+    token: string
+}
