@@ -1,3 +1,5 @@
+
+
 export type LandingPageSectionDataType = {
     lightbg: boolean;
     imgStart: boolean;
@@ -96,7 +98,30 @@ export type ArticleType = {
 
 export type UserType = {
     _id: string
-    email: string
-    password: string
     token: string
+    email?: string
+    password?: string
 }
+
+export type DecodedTokenProperties = {
+    exp: number
+}
+
+export type DecodedTokenType = UserType & DecodedTokenProperties;
+
+export enum ActionsTypes {
+    LOGIN = 'LOGIN',
+    LOGOUT = 'LOGOUT'
+};
+
+export type LoginAction = {
+    type: ActionsTypes.LOGIN
+    payload: UserType
+};
+
+export type LogoutAction = {
+    type: ActionsTypes.LOGOUT
+    payload: null
+};
+
+export type Actions = LoginAction | LogoutAction;
