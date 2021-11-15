@@ -16,11 +16,10 @@ import RankingForm from '../components/RankingForm/RankingForm';
 type Props = {
     players: PlayerType[]
     endpoint: string
-    rankingProperty: string
 };
 
 export default function RaceRankingPage(props: Props) {
-    const { players, endpoint, rankingProperty } = props;
+    const { players, endpoint } = props;
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [rankings, setRankings] = useState<PlayerType[]>(players);
@@ -34,7 +33,9 @@ export default function RaceRankingPage(props: Props) {
         setIsLoading(true);
 
         try {
-            const data: PlayerType[] = await (await axios.post(`${API_URL}/${endpoint}`, { tour, country, rankingProperty })).data.results.rankings;
+            const data: PlayerType[] = await (await axios.post(`${API_URL}/${endpoint}`, {
+                tour, country, minRanking, maxRanking
+            })).data;
 
             setIsLoading(false);
             setRankings(data);
@@ -71,13 +72,17 @@ type StaticProps = {
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps>> {
     try {
-        const data: PlayerType[] = await (await axios.post(`${API_URL}/race-to-london`, { tour: 'ATP' })).data.results.rankings;
-        const players = data.filter(player => player.race_ranking <= 50 && player.full_name !== 'Kevin Krawietz');
+        const data: PlayerType[] = await (await axios.post(`${API_URL}/race-ranking`, {
+            tour: ETour.ATP,
+            country: '',
+            minRanking: 1,
+            maxRanking: 50
+        })).data;
 
         return {
             props: {
-                players,
-                endpoint: 'race-to-london',
+                players: data,
+                endpoint: 'race-ranking',
                 rankingProperty: 'race_ranking'
             }
         }
@@ -87,7 +92,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
         return {
             props: {
                 players: [],
-                endpoint: 'race-to-london',
+                endpoint: 'race-ranking',
                 rankingProperty: 'race_ranking'
             }
         }

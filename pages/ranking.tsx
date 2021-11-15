@@ -16,7 +16,6 @@ import RankingForm from '../components/RankingForm/RankingForm';
 type Props = {
     players: PlayerType[]
     endpoint: string
-    rankingProperty: string
 };
 
 export default function RankingPage(props: Props) {
