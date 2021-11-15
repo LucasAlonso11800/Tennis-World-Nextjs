@@ -41,7 +41,7 @@ export default function Navbar() {
                         <MenuTitle onClick={() => handleClick(NavbarItems.RANKING)} isDisplayed={display === NavbarItems.RANKING}>Rankings</MenuTitle>
                         <Item isDisplayed={display === NavbarItems.RANKING}>
                             <Link href="/ranking">Ranking ATP / WTA</Link>
-                            <Link href="/race-to-london">Race To London</Link>
+                            <Link href="/race-ranking">Race To The Finals</Link>
                         </Item>
                     </Menu>
                     <Menu>
