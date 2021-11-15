@@ -8,6 +8,7 @@ import { Main } from '../styles/GlobalStyles';
 import { GetStaticPropsResult } from 'next';
 import { ETour, PlayerType } from '../types/types';
 // Components
+import PageHead from '../components/PageHead';
 import LoadingIcon from '../components/LoadingIcon/LoadingIcon';
 import RankingTable from '../components/RankingTable/RankingTable';
 import RankingForm from '../components/RankingForm/RankingForm';
@@ -44,18 +45,21 @@ export default function RaceRankingPage(props: Props) {
     };
 
     return (
-        <Main backgroundURL={'/backgrounds/Roland-garros.jpg'}>
-            {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} endpoint={endpoint} />}
-            <RankingForm
-                minRanking={minRanking}
-                setMinRanking={setMinRanking}
-                maxRanking={maxRanking}
-                setMaxRanking={setMaxRanking}
-                setCountry={setCountry}
-                setTour={setTour}
-                getAndFilterPlayers={getAndFilterPlayers}
-            />
-        </Main>
+        <>
+            <PageHead title="Race Rankings" />
+            <Main backgroundURL={'/backgrounds/Roland-garros.jpg'}>
+                {isLoading ? <LoadingIcon /> : <RankingTable rankings={rankings} endpoint={endpoint} />}
+                <RankingForm
+                    minRanking={minRanking}
+                    setMinRanking={setMinRanking}
+                    maxRanking={maxRanking}
+                    setMaxRanking={setMaxRanking}
+                    setCountry={setCountry}
+                    setTour={setTour}
+                    getAndFilterPlayers={getAndFilterPlayers}
+                />
+            </Main>
+        </>
     )
 };
 
