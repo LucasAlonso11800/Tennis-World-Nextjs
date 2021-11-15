@@ -13,6 +13,8 @@ background-color: ${colors.beige};
 export const TableRow = styled.tr`
 background-color: ${colors.beigeTransparent};
 font-weight: bold;
+border-radius: 5px;
+transition: all 0.2s ease-in-out;
 &:hover{
     background-color: ${colors.beigeTransparentHover}   
 }

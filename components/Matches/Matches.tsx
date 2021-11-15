@@ -75,7 +75,7 @@ export default function Matches(props: Props) {
                                     {tiebreaks.fourthSet ? `(${result.home_tb4} - ${result.away_tb4})` : ''}<Space />
                                     {isThereFifthSet ? `${result.home_set5} - ${result.away_set5}` : ''}<Space />
                                     {tiebreaks.fifthSet ? `(${result.home_tb5} - ${result.away_tb5})` : ''}<Space />
-                                    <p>{result.result_description}</p>
+                                    <span>{result.result_description}</span>
                                 </Result>
                                 :
                                 'Not started'}

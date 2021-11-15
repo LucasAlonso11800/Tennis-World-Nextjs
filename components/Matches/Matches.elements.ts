@@ -19,6 +19,8 @@ display: flex;
 flex-direction: column;
 padding: 1em;
 margin-bottom: 1em;
+border-radius: 5px;
+transition: all 0.2s ease-in-out;
 background-color: ${colors.beigeTransparent};
 box-shadow: ${shadows.darkBlue};
 @media all and (max-width:700px){

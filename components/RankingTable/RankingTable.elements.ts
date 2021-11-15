@@ -46,6 +46,7 @@ export const Player = styled.tr`
 background-color: ${colors.beigeTransparent};
 color: ${colors.darkBlue};
 font-weight: bold;
+transition: all 0.2s ease-in-out;
 @media all and (max-width: 570px){
     display: block;
 }

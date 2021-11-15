@@ -82,3 +82,14 @@ export type ResultType = {
     result_description: string
     winner_id: number
 };
+
+export type ArticleType = {
+    source: { id: string, name: string }
+    author: string | null
+    title: string
+    description: string
+    url: string
+    urlToImage: string
+    publishedAt: string
+    content: string
+};
