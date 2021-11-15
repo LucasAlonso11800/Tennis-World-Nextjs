@@ -12,8 +12,8 @@ import {
 } from './PageTitle.elements';
 
 type Props = {
-    title: string
-    subtitle: string
+    title: string | undefined
+    subtitle: string | undefined
     setTour:  Dispatch<SetStateAction<ETour>>
 };
 
