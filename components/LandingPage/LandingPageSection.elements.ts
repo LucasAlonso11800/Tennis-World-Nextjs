@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, shadows } from '../../const/Styles';
+import { DefaultButton } from '../../styles/GlobalStyles';
 
 type Props = {
     lightbg?: boolean
@@ -50,20 +51,15 @@ color: ${({ lightbg }) => lightbg ? colors.darkBlue : '#fff'};
 margin: 1em 0;
 `;
 
-export const Button = styled.button<Props>`
+export const Button = styled(DefaultButton)<Props>`
 background-color: ${({ lightbg }) => lightbg ? colors.darkBlue : colors.beige};
-padding: 0.5em 1em;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-transition: all 0.2s ease-in-out;
 &:hover{
     background-color: ${({ lightbg }) => lightbg ? colors.darkBlueHover : colors.beigeHover};
+    font-weight: bold;
 }
 `;
 
 export const Link = styled.a<Props>`
 font-size: 1rem;
 color: ${({ lightbg }) => lightbg ? '#fff' : colors.darkBlue};
-font-weight: bold;
 `;

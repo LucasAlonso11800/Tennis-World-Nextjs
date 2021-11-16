@@ -45,8 +45,8 @@ export const calendarSection: LandingPageSectionDataType = {
     text: "Check the current season calendar and the dates and cities each tournament is held",
     link: '/season',
     linkText: 'Season Calendar',
-    img: '/miniatures/Sharapova.jpg',
-    alt: 'Maria Sharapova'
+    img: '/miniatures/Osaka.jpg',
+    alt: 'Naomi Osaka'
 };
 
 export const newsSection: LandingPageSectionDataType = {
@@ -69,6 +69,6 @@ export const articlesSection: LandingPageSectionDataType = {
     text: "Create your account and keep track of your favourite articles",
     link: '/user-articles',
     linkText: 'Your articles',
-    img: '/miniatures/Ivanovic.jpg',
-    alt: 'Ana Ivanovic'
+    img: '/miniatures/Sharapova.jpg',
+    alt: 'Maria Sharapova'
 };

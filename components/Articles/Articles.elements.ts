@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, shadows } from '../../const/Styles';
+import { DefaultButton } from '../../styles/GlobalStyles';
 
 export const ArticlesContainer = styled.div`
 width: 100%;
@@ -47,16 +48,12 @@ export const ArticleButtons = styled.div`
 display: flex;
 `;
 
-export const ArticleButton = styled.button<{ bold: boolean }>`
-padding: 0.5em 1em;
+export const ArticleButton = styled(DefaultButton)<{ bold: boolean }>`
 margin: 0 0.5em;
 background-color: ${colors.beige};
 color: ${colors.darkBlue};
 width: 100%;
 font-weight: ${({ bold }) => bold ? 'bold' : 'normal'};
-transition: all 0.2s ease-in-out;
-cursor: pointer;
-border-radius: 5px;
 &:hover{
     background-color: ${colors.beigeHover};
 }

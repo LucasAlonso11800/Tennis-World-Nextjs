@@ -14,4 +14,12 @@ min-height: 100vh;
 display: flex;
 flex-direction: column;
 position: relative;
-`
+`;
+
+export const DefaultButton = styled.button`
+padding: 0.5em 1em;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+`;

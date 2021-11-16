@@ -11,6 +11,8 @@ export const MatchesContainer = styled.div`
 
 export const NoMatchesAlert = styled.h3`
 text-align: center;
+font-size: 2rem;
+border-bottom: 2px solid #000;
 `;
 
 export const MatchContainer = styled.div`

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, shadows } from '../../const/Styles';
+import { DefaultButton } from '../../styles/GlobalStyles';
 
 export const Container = styled.div`
 width: 40%;
@@ -30,28 +31,27 @@ margin: 1em 0;
 export const ErrorMessage = styled.p`
 border-bottom: 1px solid ${colors.darkBlue};
 `;
+
 export const Form = styled.form`
 width: 100%;
 display: flex;
 flex-direction: column;
 `;
+
 export const Label = styled.label`
 margin: 0.5em 0;
 font-weight: bold;
 `;
+
 export const Input = styled.input`
 padding: 0.5em 1em;
 `;
-export const SubmitButton = styled.button`
+
+export const SubmitButton = styled(DefaultButton)`
 margin-top: 1em;
-padding: 0.5em 1em;
 font-weight: bold;
 background-color: ${colors.darkBlue};
-border: none;
 color: #fff;
-cursor: pointer;
-border-radius: 5px;
-transition: all 0.2s ease-in-out;
 &:hover{
     background-color: ${colors.darkBlueHover}
 }

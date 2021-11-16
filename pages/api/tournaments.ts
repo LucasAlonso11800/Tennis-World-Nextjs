@@ -14,7 +14,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         });
 
-        res.json(data.results[tour === ETour.ATP ? 0 : 1]);
+        if (data.results.length > 0) res.json(data.results[tour === ETour.ATP ? 0 : 1]);
+        res.json({ tournament: null, matches: [] });
     }
     catch (err: any) {
         throw new Error(err)

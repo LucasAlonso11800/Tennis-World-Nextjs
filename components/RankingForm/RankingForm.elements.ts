@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../const/Styles';
+import { DefaultButton } from '../../styles/GlobalStyles';
 
 type Props = {
     isDisplayed: boolean
@@ -64,10 +65,8 @@ export const Option = styled.option`
 text-align: center;
 `;
 
-export const FormSubmit = styled.button`
+export const FormSubmit = styled(DefaultButton)`
 margin: 1em 0;
-padding: 1em 2em;
 width: 100%;
-text-align: center;
 font-weight: bold;
 `;

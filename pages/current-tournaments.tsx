@@ -69,7 +69,7 @@ type StaticProps = {
 export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps>> {
     try {
         const data = await (await axios.post(`${API_URL}/tournaments`, { tour: ETour.ATP })).data;
-
+        console.log(data, Array.isArray(data), typeof data, data === '');
         const { matches, tournament } = data
         return {
             props: {

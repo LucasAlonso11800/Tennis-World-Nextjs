@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../const/Styles';
+import { DefaultButton } from '../../styles/GlobalStyles';
 
 export const FormContainer = styled.form`
 width: 100%;
@@ -20,15 +21,13 @@ border: none;
 }
 `;
 
-export const SearchButton = styled.button`
+export const SearchButton = styled(DefaultButton)`
 padding: 1em;
+border-radius: 0;
 background-color: ${colors.beige};
 color: ${colors.darkBlue};
 font-weight: bold;
 outline: none;
-border: none;
-transition: all 0.2s ease-in-out;
-cursor: pointer;
 &:hover{
     background-color: ${colors.beigeHover};
 }
