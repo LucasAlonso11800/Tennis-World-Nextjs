@@ -13,7 +13,7 @@ export default function WarningCard() {
         <WarningCardContainer>
             <FaExclamationCircle size={48}/>
             <WarningText>Please log in in order to save your favourite news.</WarningText>
-            <WarningText>In case you don't have yet an account you can sign up for free.</WarningText>
+            <WarningText>In case you don&apos;t have yet an account you can sign up for free.</WarningText>
             <ButtonsContainer>
                 <CardButton>
                     <Link href="/signin">Sign In</Link>
