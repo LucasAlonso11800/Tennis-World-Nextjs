@@ -7,7 +7,7 @@ import { Main } from '../styles/GlobalStyles'
 const Home: NextPage = () => {
     return (
         <>
-            <PageHead title="" />
+            <PageHead title="Welcome" />
             <Main>
                 <LandingPageSection {...rankingsSection} />
                 <LandingPageSection {...raceSection} />

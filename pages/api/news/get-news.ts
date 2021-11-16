@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next"
+import connectDB from "../../../middlewares/mongo";
 import Article from "../../../models/Article"
 import { ArticleType } from "../../../types/types"
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { id } = req.body;
     try {
         const articles: ArticleType[] = await Article.find({ userId: id }).sort({ 'date': -1 });
@@ -12,3 +13,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.log(err)
     }
 };
+
+export default connectDB(handler);

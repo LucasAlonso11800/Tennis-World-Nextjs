@@ -26,7 +26,7 @@ export default function LandingPageSection(props: LandingPageSectionDataType) {
                     </Button>
                 </Column>
                 <Column lightbg={lightbg}>
-                    <Image src={img} alt={alt} layout="responsive" width={650} height={400}/>
+                    <Image src={img} alt={alt} layout="responsive" width={650} height={400} priority={alt === 'Novak Djokovic' || alt === 'Rafael Nadal'}/>
                 </Column>
             </Row>
         </LandingSectionContainer>

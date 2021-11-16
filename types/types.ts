@@ -109,19 +109,18 @@ export type DecodedTokenProperties = {
 
 export type DecodedTokenType = UserType & DecodedTokenProperties;
 
-export enum ActionsTypes {
+export enum EActionTypes {
     LOGIN = 'LOGIN',
     LOGOUT = 'LOGOUT'
 };
 
 export type LoginAction = {
-    type: ActionsTypes.LOGIN
+    type: EActionTypes.LOGIN
     payload: UserType
 };
 
 export type LogoutAction = {
-    type: ActionsTypes.LOGOUT
-    payload: null
+    type: EActionTypes.LOGOUT
 };
 
 export type Actions = LoginAction | LogoutAction;

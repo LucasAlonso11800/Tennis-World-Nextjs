@@ -48,6 +48,7 @@ display: flex;
 
 export const ArticleButton = styled.button<{ bold: boolean }>`
 padding: 0.5em 1em;
+margin: 0 0.5em;
 background-color: ${colors.beige};
 color: ${colors.darkBlue};
 width: 100%;

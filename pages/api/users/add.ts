@@ -1,10 +1,15 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import bcrypt from 'bcryptjs';
+// Middleware
+import connectDB from "../../../middlewares/mongo";
+// Model
 import User from "../../../models/User";
+// Helper
 import { generateToken } from "../../../helpers/generateToken";
+import bcrypt from 'bcryptjs';
+// Types
+import { NextApiRequest, NextApiResponse } from "next";
 import { UserType } from "../../../types/types";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
         const email: UserType | null = await User.findOne({ email: req.body.email });
         if (email) res.json('Email already registered')
@@ -29,3 +34,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         throw new Error(err)
     }
 };
+
+export default connectDB(handler);

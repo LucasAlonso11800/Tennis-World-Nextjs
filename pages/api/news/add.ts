@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { checkAuth } from "../../../helpers/checkAuth";
+import connectDB from "../../../middlewares/mongo";
 import Article from "../../../models/Article"
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { title, urlToImage, description, url, userId, token } = req.body;
     checkAuth(token)
 
@@ -22,3 +23,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         throw new Error(err)
     }
 };
+
+export default connectDB(handler);

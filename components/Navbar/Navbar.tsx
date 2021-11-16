@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
-// import { GlobalContext } from '../../context/GlobalState';
-import { FaTimes, FaBars } from 'react-icons/fa';
+import { GlobalContext } from '../../context/GlobalState';
 import {
     Header,
     Nav,
@@ -10,8 +9,10 @@ import {
     Item,
     MobileIcon
 } from './Navbar.elements';
+import { FaTimes, FaBars } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+import { EActionTypes } from '../../types/types';
 
 enum NavbarItems {
     RANKING,
@@ -21,17 +22,17 @@ enum NavbarItems {
 };
 
 export default function Navbar() {
-    // const { userData, dispatch } = useContext(GlobalContext);
+    const { state, dispatch } = useContext(GlobalContext);
 
     const [display, setDisplay] = useState<NavbarItems | null>(null);
     const [displayLateralNavbar, setDisplayLateralNavbar] = useState<boolean>(false)
 
-    const handleClick = (item: NavbarItems): void =>  display === item ? setDisplay(null) : setDisplay(item);
+    const handleClick = (item: NavbarItems): void => display === item ? setDisplay(null) : setDisplay(item);
 
     return (
         <Header>
             <Nav>
-                <Image src="/logos/ATP.png" alt='ATP Logo' width={40} height={40}/>
+                <Image src="/logos/ATP.png" alt='ATP Logo' width={40} height={40} />
                 <Link href="/" >Tennis World</Link>
                 <MobileIcon onClick={() => setDisplayLateralNavbar(!displayLateralNavbar)}>
                     {displayLateralNavbar ? <FaTimes /> : <FaBars />}
@@ -61,16 +62,20 @@ export default function Navbar() {
                     <Menu>
                         <MenuTitle onClick={() => handleClick(NavbarItems.ACCOUNT)} isDisplayed={display === NavbarItems.ACCOUNT}>Your Account</MenuTitle>
                         <Item isDisplayed={display === NavbarItems.ACCOUNT}>
-                            {/* {userData ? <Link href="/">Logout</Link> : */}
+                            {state !== null ?
+                                <Link href="/">
+                                    <a onClick={() => dispatch({ type: EActionTypes.LOGOUT })}>Logout</a>
+                                </Link>
+                                :
                                 <>
                                     <Link href="/signin">Sign in</Link>
                                     <Link href="/signup">Sign up</Link>
                                 </>
-                            {/* } */}
+                            }
                         </Item>
                     </Menu>
                 </MenuContainer>
-                <Image src="/logos/WTA.svg" alt='WTA Logo' width={40} height={40}/>
+                <Image src="/logos/WTA.svg" alt='WTA Logo' width={40} height={40} />
             </Nav>
         </Header>
     )

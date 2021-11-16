@@ -40,7 +40,7 @@ export default function NewsPage(props: Props) {
             <PageHead title="News" />
             <Main backgroundURL="/backgrounds/Clay.jpg">
                 <SearchTab query={query} setQuery={setQuery} searchNews={searchNews} />
-                {isLoading ? <LoadingIcon /> : <Articles news={news} setNews={setNews} isSaved={false} />}
+                {isLoading ? <LoadingIcon /> : <Articles news={news} />}
             </Main>
         </>
     )

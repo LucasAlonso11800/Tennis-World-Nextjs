@@ -25,7 +25,7 @@ padding: 1em;
 `;
 
 export const Column = styled.div<Props>`
-width: 50%;
+width: 100%;
 padding: 1em 2em;
 > span {
     border-radius: 10px;
