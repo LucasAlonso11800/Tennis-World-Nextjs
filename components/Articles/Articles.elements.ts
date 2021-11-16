@@ -36,6 +36,7 @@ margin-bottom: 1em;
 export const ArticleImg = styled.img`
 width: 100%;
 box-shadow: ${shadows.darkBlue};
+border-radius: 5px;
 `;
 
 export const ArticleDescription = styled.p`

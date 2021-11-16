@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, models, Schema } from 'mongoose';
 
 const ArticleSchema = new Schema({
     title: {
@@ -27,4 +27,5 @@ const ArticleSchema = new Schema({
     }
 });
 
-export default model('Article', ArticleSchema);
+const ArticleModel = models.Article || model('Article', ArticleSchema);
+export default ArticleModel;

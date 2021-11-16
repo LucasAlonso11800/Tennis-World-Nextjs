@@ -6,6 +6,7 @@ import { Main } from '../styles/GlobalStyles';
 
 import UserForm from '../components/UserForm/UserForm';
 import { EActionTypes } from '../types/types';
+import PageHead from '../components/PageHead';
 
 export default function SignInPage() {
     const { state, dispatch } = useContext(GlobalContext);
@@ -15,7 +16,7 @@ export default function SignInPage() {
     const [authError, setAuthError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if(state !== null && typeof window !== 'undefined') window.location.assign("/");
+    if (state !== null && typeof window !== 'undefined') window.location.assign("/");
 
     async function login(e: Event) {
         e.preventDefault()
@@ -24,7 +25,7 @@ export default function SignInPage() {
             const data = await (await axios.post(`${API_URL}/users/in`, { email, password })).data;
             dispatch({
                 type: EActionTypes.LOGIN,
-                payload: { 
+                payload: {
                     _id: data._id,
                     token: data.token,
                 }
@@ -42,19 +43,22 @@ export default function SignInPage() {
     };
 
     return (
-        <Main backgroundURL='/backgrounds/Finals.jpg'>
-            <UserForm
-                title={'Sign In'}
-                subtitle={'Enter and visit your favourite articles about Tennis'}
-                buttonText={'Sign in'}
-                loading={loading}
-                authError={authError}
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                handleSubmit={login}
-            />
-        </Main>
+        <>
+            <PageHead title="Login" />
+            <Main backgroundURL='/backgrounds/Finals.jpg'>
+                <UserForm
+                    title={'Sign In'}
+                    subtitle={'Enter and visit your favourite articles about Tennis'}
+                    buttonText={'Sign in'}
+                    loading={loading}
+                    authError={authError}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    handleSubmit={login}
+                />
+            </Main>
+        </>
     )
 };

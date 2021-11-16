@@ -12,8 +12,9 @@ export const GlobalContext = createContext<{
 
 function getInitialState() {
     if (typeof localStorage !== "undefined") {
-        if (localStorage.getItem("token")) {
-            const decodedToken: DecodedTokenType = jwtDecode(localStorage.getItem("token") as string);
+        const token = localStorage.getItem("token"); 
+        if (token) {
+            const decodedToken: DecodedTokenType = jwtDecode(token);
 
             if (decodedToken.exp * 1000 < Date.now()) {
                 localStorage.removeItem("token");
@@ -22,7 +23,7 @@ function getInitialState() {
 
             return {
                 _id: decodedToken._id,
-                token: typeof localStorage !== undefined ? localStorage.getItem("token") as string : ''
+                token
             }
         }
     };
@@ -32,11 +33,11 @@ function getInitialState() {
 function reducer(state: UserType | null, action: Actions) {
     switch (action.type) {
         case 'LOGIN': {
-            typeof localStorage !== undefined ? localStorage.setItem("token", action.payload.token) : () => { };
+            localStorage.setItem("token", action.payload.token);
             return action.payload
         }
         case 'LOGOUT': {
-            typeof localStorage !== undefined ? localStorage.removeItem("token") : () => { };
+            localStorage.removeItem("token");
             return null
         }
         default: return state

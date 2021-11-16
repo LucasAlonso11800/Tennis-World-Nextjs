@@ -9,6 +9,7 @@ import { Main } from '../styles/GlobalStyles';
 import UserForm from '../components/UserForm/UserForm';
 // Types
 import { EActionTypes } from '../types/types';
+import PageHead from '../components/PageHead';
 
 export default function SignUpPage() {
     const { state, dispatch } = useContext(GlobalContext);
@@ -17,7 +18,7 @@ export default function SignUpPage() {
     const [authError, setAuthError] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
 
-    if(state !== null && typeof window !== 'undefined') window.location.assign("/");
+    if (state !== null && typeof window !== 'undefined') window.location.assign("/");
 
     async function saveUser(e: Event) {
         e.preventDefault();
@@ -27,7 +28,7 @@ export default function SignUpPage() {
 
             dispatch({
                 type: EActionTypes.LOGIN,
-                payload: { 
+                payload: {
                     _id: data._id,
                     token: data.token,
                 }
@@ -43,21 +44,24 @@ export default function SignUpPage() {
             setAuthError('Email already registered')
         }
     };
-    
+
     return (
-        <Main backgroundURL="/backgrounds/Hard.jpg">
-            <UserForm
-                title={'Create Account'}
-                subtitle={'Sign up and save articles about your favourite players and tournaments'}
-                buttonText={'Sign up'}
-                loading={loading}
-                authError={authError}
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                handleSubmit={saveUser}
-            />
-        </Main>
+        <>
+            <PageHead title="Register" />
+            <Main backgroundURL="/backgrounds/Hard.jpg">
+                <UserForm
+                    title={'Create Account'}
+                    subtitle={'Sign up and save articles about your favourite players and tournaments'}
+                    buttonText={'Sign up'}
+                    loading={loading}
+                    authError={authError}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    handleSubmit={saveUser}
+                />
+            </Main>
+        </>
     )
 };

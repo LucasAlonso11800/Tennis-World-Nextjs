@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { GlobalContext } from '../context/GlobalState';
 // Const
 import { API_URL } from '../const/ServerURL';
 // Types
@@ -17,10 +18,13 @@ type Props = {
 };
 
 export default function NewsPage(props: Props) {
+    const { state } = useContext(GlobalContext);
     const { articles } = props;
+
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [news, setNews] = useState<ArticleType[]>(articles);
     const [query, setQuery] = useState<string>('Tennis');
+    const [userArticles, setUserArticles] = useState<ArticleType[]>()
 
     async function searchNews(e: Event) {
         setIsLoading(true)
@@ -35,12 +39,26 @@ export default function NewsPage(props: Props) {
         }
     };
 
+    useEffect(() => {   
+        if(state !== null){
+            (async () => {
+                try {
+                    const data = await (await axios.post(`${API_URL}/news/get-news`, { id: state._id })).data
+                    setUserArticles(data);
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            })();
+        }
+    }, [state]);
+
     return (
         <>
             <PageHead title="News" />
             <Main backgroundURL="/backgrounds/Clay.jpg">
                 <SearchTab query={query} setQuery={setQuery} searchNews={searchNews} />
-                {isLoading ? <LoadingIcon /> : <Articles news={news} />}
+                {isLoading ? <LoadingIcon /> : <Articles news={news} userArticles={userArticles} setUserArticles={setUserArticles} pageName="news"/>}
             </Main>
         </>
     )
