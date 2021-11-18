@@ -57,9 +57,6 @@ flex-grow: 1;
 @media all and (max-width: 600px){
     flex-direction: column;
 }
-@media all and (max-width: 429px){
-    top: 101px;
-}
 `;
 
 
