@@ -84,7 +84,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
                 players: data,
                 endpoint: 'ranking',
                 rankingProperty: 'ranking'
-            }
+            },
+            revalidate: 60 * 60 * 24 * 7
         }
     }
     catch (err) {
@@ -94,7 +95,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
                 players: [],
                 endpoint: 'ranking',
                 rankingProperty: 'ranking'
-            }
+            },
+            revalidate: 10
         }
     }
 };

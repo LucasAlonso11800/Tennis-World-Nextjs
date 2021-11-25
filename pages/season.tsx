@@ -71,7 +71,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
         return {
             props: {
                 seasonTournaments: data,
-            }
+            },
+            revalidate: 60 * 60 * 24 * 7
         }
     }
     catch (err) {
@@ -79,7 +80,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
         return {
             props: {
                 seasonTournaments: [],
-            }
+            },
+            revalidate: 10
         }
     }
 };

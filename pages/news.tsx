@@ -74,7 +74,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
         return {
             props: {
                 articles: data
-            }
+            },
+            revalidate: 60 * 60 * 24
         }
     }
     catch (err) {
@@ -82,7 +83,8 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StaticProps
         return {
             props: {
                 articles: []
-            }
+            },
+            revalidate: 10
         }
     }
 };
