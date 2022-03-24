@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
     Table,
     TableHead,
@@ -18,30 +18,10 @@ type Props = {
 };
 
 export default function RankingTable(props: Props) {
-    const [windowWidth, setWindowWidth] = useState(0)
-    const [width, setWidth] = useState(0);
-
     const { rankings, endpoint } = props;
 
-    useEffect(() => {
-        setWindowWidth(window.innerWidth);
-    }, []);
-
-    if(typeof window !== 'undefined') window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
-
-    useEffect(() => {
-        const smallerThan380 = windowWidth < 380;
-        const smallerThan395 = windowWidth < 395;
-        const smallerThan960 = windowWidth < 960;
-
-        setWidth(windowWidth - 170);
-        if (smallerThan960) setWidth(windowWidth - 135);
-        if (smallerThan395) setWidth(windowWidth - 120);
-        if (smallerThan380) setWidth(265);
-    }, [windowWidth]);
-
     return (
-        <Table width={width}>
+        <Table>
             <TableHead>
                 <TableRow>
                     <TableHeader>Ranking</TableHeader>

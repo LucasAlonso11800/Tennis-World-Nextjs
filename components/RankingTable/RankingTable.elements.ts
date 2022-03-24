@@ -8,7 +8,16 @@ type Props = {
 }
 
 export const Table = styled.table`
-width: ${({ width }) => width ? `${width}px` : '100%'};
+width: calc(100% - 160px);
+@media all and (max-width: 960px){
+    width: calc(100% - 120px)
+}
+@media all and (max-width: 395px){
+    width: calc(100% - 110px)
+}
+@media all and (max-width: 380px){
+    width: 265px
+}
 @media all and (max-width: 570px){
     display: block;
 }
