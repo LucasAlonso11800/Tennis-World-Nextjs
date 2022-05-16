@@ -2,7 +2,9 @@ import React from 'react';
 import {
     Table,
     TableHead,
-    TableRow
+    TableRow,
+    TableHeader,
+    TournamentData
 } from './SeasonTable.elements';
 import { TournamentType } from '../../types/types';
 
@@ -15,14 +17,14 @@ export default function SeasonTable(props: Props) {
     return (
         <Table>
             <TableHead>
-                <tr>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Tournament</th>
-                    <th>Surface</th>
-                    <th>City</th>
-                    <th>Country</th>
-                </tr>
+                <TableRow>
+                    <TableHeader>Start Date</TableHeader>
+                    <TableHeader>End Date</TableHeader>
+                    <TableHeader>Tournament</TableHeader>
+                    <TableHeader>Surface</TableHeader>
+                    <TableHeader>City</TableHeader>
+                    <TableHeader>Country</TableHeader>
+                </TableRow>
             </TableHead>
             <tbody>
                 {tournaments.map(tournament => {
@@ -30,12 +32,12 @@ export default function SeasonTable(props: Props) {
 
                     return (
                         <TableRow key={tournament.id}>
-                            <td>{start_date.substring(8, 10)} / {start_date.substring(5, 7)} </td>
-                            <td>{end_date.substring(8, 10)} / {end_date.substring(5, 7)} </td>
-                            <td>{name}</td>
-                            <td>{surface}</td>
-                            <td>{city}</td>
-                            <td>{country}</td>
+                            <TournamentData content={0} borderTop={true}>{start_date.substring(8, 10)} / {start_date.substring(5, 7)} </TournamentData>
+                            <TournamentData content={1}>{end_date.substring(8, 10)} / {end_date.substring(5, 7)} </TournamentData>
+                            <TournamentData content={2}>{name}</TournamentData>
+                            <TournamentData content={3}>{surface}</TournamentData>
+                            <TournamentData content={4}>{city}</TournamentData>
+                            <TournamentData content={5}>{country}</TournamentData>
                         </TableRow>
                     )
                 })}

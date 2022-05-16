@@ -31,9 +31,9 @@ export enum ETour {
 };
 
 export type TournamentType = {
-    city: string
     code: string
     country: string
+    city: string
     country_code: string
     end_date: string
     id: number

@@ -38,6 +38,8 @@ export default function SeasonPage(props: Props) {
                 setTournaments(data);
             }
             catch (err) {
+                setIsLoading(false);
+                setTournaments([]);
                 console.log(err)
             }
         })();
