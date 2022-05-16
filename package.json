@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "e2e": "npx cypress open"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -26,6 +27,7 @@
     "@types/node": "16.11.7",
     "@types/react": "17.0.34",
     "@types/styled-components": "^5.1.15",
+    "cypress": "^9.6.1",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.3",
     "typescript": "4.4.4"

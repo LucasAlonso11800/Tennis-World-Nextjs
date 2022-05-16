@@ -5,7 +5,8 @@ import { ETour } from '../../types/types';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { tour } = req.body;
-    const date = new Date().toISOString().substr(0, 10)
+    const date = new Date().toISOString().substring(0, 10)
+
     try {
         const { data } = await axios.get(`${TENNIS_API_URL}/matches-by-date/${date}`, {
             headers: {
@@ -14,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         });
 
-        if (data.results.length > 0) res.json(data.results[tour === ETour.ATP ? 0 : 1]);
+        if (data.results.length > 0) return res.json(data.results[tour === ETour.ATP ? 0 : 1]);
         res.json({ tournament: null, matches: [] });
     }
     catch (err: any) {
