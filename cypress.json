@@ -1,6 +1,6 @@
 {
     "env": {
-        "URL": "http://localhost:3005"
+        "URL": "https://tennis-world-nextjs-zeta.vercel.app"
     },
     "retries": {
         "runMode": 1,
